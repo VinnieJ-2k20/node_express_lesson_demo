@@ -2,9 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import { usersRouter } from './routers/users';
 import { colorsRouter } from './routers/colors';
+import { dbInit } from './utils/dbInit';
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
+dbInit();
 
 app.use(cors());
 
