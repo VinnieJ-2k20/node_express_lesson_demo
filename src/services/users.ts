@@ -1,30 +1,18 @@
-const users = [
-  { id: 1, name: 'Paul Mccartney', carColorId: 5 },
-  { id: 2, name: 'John Lennon', carColorId: 4 },
-  { id: 3, name: 'George Harrison', carColorId: 2 },
-  { id: 4, name: 'Ringo Starr', carColorId: 2 },
-];
+import { User } from "../models/User";
 
 function getAll() {
-  return users;
+  return User.findAll();
 }
 
 function findById(userId: number) {
-  return users.find(({ id }) => id === userId) || null;
+  return User.findByPk(userId);
 }
 
 function create(name: string, carColorId: number) {
-  const newUserId = Math.max(...users.map(({ id }) => id)) + 1;
-
-  const newUser = {
-    id: newUserId,
+  return User.create({
     name,
     carColorId,
-  };
-
-  users.push(newUser);
-
-  return newUser;
+  });
 }
 
 export const usersService = {

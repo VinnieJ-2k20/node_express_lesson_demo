@@ -2,16 +2,15 @@ import { Request, Response } from 'express';
 import { usersService } from '../services/users';
 import { colorsService } from '../services/colors';
 
-const getAll = (req: Request, res: Response) => {
-  const users = usersService.getAll();
-
+const getAll = async (req: Request, res: Response) => {
+  const users = await usersService.getAll();
   res.send(users);
 }
 
-const getById = (req: Request, res: Response) => {
+const getById = async (req: Request, res: Response) => {
   const { userId } = req.params;
 
-  const foundUser = usersService.findById(+userId);
+  const foundUser = await usersService.findById(+userId);
 
   if (!foundUser) {
     res.sendStatus(404);
@@ -21,13 +20,13 @@ const getById = (req: Request, res: Response) => {
   res.send(foundUser);
 }
 
-const create = (req: Request, res: Response) => {
+const create = async (req: Request, res: Response) => {
   const { name, carColorId } = req.body;
 
   const nameIsValid = Boolean(name) && typeof name === 'string';
 
   const carColorIdIsValid = (
-      colorsService.findById(carColorId)
+      await colorsService.findById(carColorId)
         && typeof carColorId === 'number'
     );
 
@@ -37,7 +36,7 @@ const create = (req: Request, res: Response) => {
     return;
   }
 
-  const newUser = usersService.create(name, carColorId);
+  const newUser = await usersService.create(name, carColorId);
 
   res.status(201);
   res.send(newUser);

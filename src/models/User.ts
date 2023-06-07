@@ -35,6 +35,7 @@ export class User extends Model {
   @ForeignKey(() => Color)
   @AllowNull(false)
   @Column({
+    field: 'car_color_id',
     type: DataTypes.INTEGER,
   })
   carColorId: number;
