@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import { models } from "../models";
 
-const URI = 'postgres://VinnieJ-2k20:IdobfNsAB3D6@ep-morning-mode-462620.eu-central-1.aws.neon.tech/neondb';
+const URI = 'postgres://VinnieJ-2k20:7tDaN3kfVipR@ep-square-butterfly-738775.eu-central-1.aws.neon.tech/neondb';
 
 export const dbInit = () => {
   try {

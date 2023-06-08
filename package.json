@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm i && tsc -p .",
+    "build": "tsc -p .",
     "dev": "nodemon src/server.ts"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
     "express": "^4.18.2",
     "pg": "^8.11.0",
     "pg-hstore": "^2.3.4",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^6.32.0",
     "sequelize-typescript": "^2.1.5"
   },
